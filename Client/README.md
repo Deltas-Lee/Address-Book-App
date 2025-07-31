@@ -1,6 +1,6 @@
 # Address Book Frontend
 
-Angular 20 frontend application for the Address Book system.
+Angular 20 frontend application for the Address Book app.
 
 ## 🚀 Quick Start
 
