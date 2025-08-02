@@ -27,11 +27,14 @@ packages/
 # Entity Framework
 *.edmx.diagram
 *.edmx.designer.cs
+*.edmx.sql
 
-# SQL Server files
-*.mdf
-*.ldf
-*.ndf
+# Database files
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
 
 # Logs
 logs/
