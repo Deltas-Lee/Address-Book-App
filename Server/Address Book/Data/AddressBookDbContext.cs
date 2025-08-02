@@ -24,12 +24,12 @@ namespace Address_Book.Data
                 entity.Property(c => c.ZipCode).HasMaxLength(10);
 
                 // Seed dummy data with STATIC values
-                var seedDate = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+                var seedDate = new DateTime(2024, 8, 2, 17, 48, 0, DateTimeKind.Utc);
                 
                 entity.HasData(
                     new Contact
                     {
-                        Id = Guid.Parse("11111111-1111-1111-1111-111111111111"),
+                        Id = 1,
                         FullName = "John Doe",
                         Email = "john.doe@example.com",
                         PhoneNumber = "+27-21-123-4567",
@@ -42,7 +42,20 @@ namespace Address_Book.Data
                     },
                     new Contact
                     {
-                        Id = Guid.Parse("22222222-2222-2222-2222-222222222222"),
+                        Id = 2,
+                        FullName = "Mpho Mokwena",
+                        Email = "mpho.mokwena@example.com",
+                        PhoneNumber = "+27-12-234-5678",
+                        Address = "789 High Street",
+                        City = "Pretoria",
+                        Province = "Gauteng",
+                        ZipCode = "0001",
+                        CreatedAt = seedDate,
+                        UpdatedAt = seedDate
+                    },
+                    new Contact
+                    {
+                        Id = 3,
                         FullName = "Jane Smith",
                         Email = "jane.smith@example.com",
                         PhoneNumber = "+27-11-234-5678",
@@ -55,7 +68,20 @@ namespace Address_Book.Data
                     },
                     new Contact
                     {
-                        Id = Guid.Parse("33333333-3333-3333-3333-333333333333"),
+                        Id = 4,
+                        FullName = "Thabo Nkosi",
+                        Email = "thabo.nkosi@example.com",
+                        PhoneNumber = "+27-12-345-6789",
+                        Address = "321 Pine Street",
+                        City = "Pretoria",
+                        Province = "Gauteng",
+                        ZipCode = "0002",
+                        CreatedAt = seedDate,
+                        UpdatedAt = seedDate
+                    },
+                    new Contact
+                    {
+                        Id = 5,
                         FullName = "Michael Johnson",
                         Email = "michael.johnson@example.com",
                         PhoneNumber = "+27-31-345-6789",
@@ -68,7 +94,20 @@ namespace Address_Book.Data
                     },
                     new Contact
                     {
-                        Id = Guid.Parse("44444444-4444-4444-4444-444444444444"),
+                        Id = 6,
+                        FullName = "Lindiwe Dlamini",
+                        Email = "lindiwe.dlamini@example.com",
+                        PhoneNumber = "+27-31-456-7890",
+                        Address = "123 Willow Street",
+                        City = "Durban",
+                        Province = "KwaZulu-Natal",
+                        ZipCode = "4001",
+                        CreatedAt = seedDate,
+                        UpdatedAt = seedDate
+                    },
+                    new Contact
+                    {
+                        Id = 7,
                         FullName = "Sarah Williams",
                         Email = "sarah.williams@example.com",
                         PhoneNumber = "+27-51-456-7890",
@@ -81,7 +120,7 @@ namespace Address_Book.Data
                     },
                     new Contact
                     {
-                        Id = Guid.Parse("55555555-5555-5555-5555-555555555555"),
+                        Id = 8,
                         FullName = "David Brown",
                         Email = "david.brown@example.com",
                         PhoneNumber = "+27-41-567-8901",
@@ -89,6 +128,32 @@ namespace Address_Book.Data
                         City = "Port Elizabeth",
                         Province = "Eastern Cape",
                         ZipCode = "6001",
+                        CreatedAt = seedDate,
+                        UpdatedAt = seedDate
+                    },
+                    new Contact
+                    {
+                        Id = 9,
+                        FullName = "Sipho Khumalo",
+                        Email = "sipho.khumalo@example.com",
+                        PhoneNumber = "+27-51-567-8901",
+                        Address = "987 Cedar Road",
+                        City = "Bloemfontein",
+                        Province = "Free State",
+                        ZipCode = "9301",
+                        CreatedAt = seedDate,
+                        UpdatedAt = seedDate
+                    },
+                    new Contact
+                    {
+                        Id = 10,
+                        FullName = "Deltas Lephalala",
+                        Email = "deltaslep@gmail.com",
+                        PhoneNumber = "+27-15-678-9012",
+                        Address = "456 Birch Street",
+                        City = "Lephalale",
+                        Province = "Limpopo",
+                        ZipCode = "0555",
                         CreatedAt = seedDate,
                         UpdatedAt = seedDate
                     }

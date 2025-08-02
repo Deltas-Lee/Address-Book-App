@@ -3,6 +3,7 @@ using System;
 using Address_Book.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Address_Book.Migrations
 {
     [DbContext(typeof(AddressBookDbContext))]
-    partial class AddressBookDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250802155141_InitialCreateWithIntIds")]
+    partial class InitialCreateWithIntIds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.7");
@@ -191,7 +194,7 @@ namespace Address_Book.Migrations
                             City = "Lephalale",
                             CreatedAt = new DateTime(2024, 8, 2, 17, 48, 0, 0, DateTimeKind.Utc),
                             Email = "deltaslep@gmail.com",
-                            FullName = "Deltas Lephalala",
+                            FullName = "Deltas Lephalal",
                             PhoneNumber = "+27-15-678-9012",
                             Province = "Limpopo",
                             UpdatedAt = new DateTime(2024, 8, 2, 17, 48, 0, 0, DateTimeKind.Utc),

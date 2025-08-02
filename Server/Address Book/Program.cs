@@ -1,5 +1,4 @@
 using Address_Book.Data;
-using Address_Book.Repositories;
 using Address_Book.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -20,8 +19,7 @@ namespace Address_Book
             builder.Services.AddDbContext<AddressBookDbContext>(options =>
                 options.UseSqlite("Data Source=addressbook.db"));
 
-            // Register the contact repository & service layers
-            builder.Services.AddScoped<IContactRepository, ContactRepository>();
+            // Register the service layer
             builder.Services.AddScoped<IContactService, ContactService>();
 
             // Add API explorer and swagger
@@ -39,6 +37,13 @@ namespace Address_Book
                         Email = "deltaslep@gmail.com",
                     }
                 });
+
+            var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            if (File.Exists(xmlPath))
+            {
+                c.IncludeXmlComments(xmlPath);
+            }
             });
 
             var app = builder.Build();

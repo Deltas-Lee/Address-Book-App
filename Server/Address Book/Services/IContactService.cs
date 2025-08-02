@@ -7,16 +7,14 @@ namespace Address_Book.Services
         /// <summary>
         /// Retrieves all contacts asynchronously.
         /// </summary>
-        /// <param name="cancellationToken">A token to cancel the operation.</param>
         /// <returns>A collection of contact DTOs.</returns>
-        Task<IEnumerable<ContactDTO>> GetAllContactsAsync(CancellationToken cancellationToken = default);
+        Task<IEnumerable<ContactDTO>> GetAllContactsAsync();
 
         /// <summary>
         /// Retrieves a contact by its unique identifier asynchronously.
         /// </summary>
-        /// <param name="id">The unique identifier of the contact. Must not be Guid.Empty.</param>
-        /// <param name="cancellationToken">A token to cancel the operation.</param>
+        /// <param name="id">The unique identifier of the contact.</param>
         /// <returns>The contact DTO if found; otherwise, null.</returns>
-        Task<ContactDTO?> GetContactByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<ContactDTO?> GetContactByIdAsync(int id);
     }
 }

@@ -4,7 +4,7 @@ namespace Address_Book.DTOs
 {
     public record ContactDTO
     (
-        Guid Id,
+        int Id,
         string FullName,
         string Email,
         string? PhoneNumber,

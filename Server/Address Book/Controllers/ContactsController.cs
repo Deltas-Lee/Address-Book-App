@@ -1,12 +1,11 @@
 ﻿using Address_Book.DTOs;
-using Address_Book.Repositories;
 using Address_Book.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Address_Book.Controllers
 {
+    [Route("")]
     [ApiController]
-    [Route("api/[controller]")]
     [Produces("application/json")]
     public class ContactsController(IContactService contactService, ILogger<ContactsController> logger) : ControllerBase
     {
@@ -14,16 +13,16 @@ namespace Address_Book.Controllers
         private readonly ILogger<ContactsController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
         /// <summary>
-        /// Gets all contacts.
+        /// Gets all the address book data
         /// </summary>
         /// <returns>List of contacts</returns>
-        [HttpGet]
+        [HttpGet("contacts")]
         [ProducesResponseType(typeof(IEnumerable<ContactDTO>), StatusCodes.Status200OK)]
-        public async Task<ActionResult<IEnumerable<ContactDTO>>> GetAllContacts(CancellationToken cancellationToken = default)
+        public async Task<ActionResult<IEnumerable<ContactDTO>>> GetAllContacts()
         {
             try
             {
-                var contacts = await _contactService.GetAllContactsAsync(cancellationToken);
+                var contacts = await _contactService.GetAllContactsAsync();
                 return Ok(contacts);
             }
             catch (Exception ex)
