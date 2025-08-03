@@ -3,7 +3,7 @@
         <mat-icon class="title-icon">person</mat-icon>
         {{ data.fullName }}
       </h2>
-      
+
       <mat-dialog-content class="dialog-content">
         <div class="detail-section">
           <div class="detail-item">
@@ -13,7 +13,7 @@
               <span class="detail-value">{{ data.email }}</span>
             </div>
           </div>
-          
+
           <div class="detail-item" *ngIf="data.phoneNumber">
             <mat-icon class="detail-icon">phone</mat-icon>
             <div class="detail-info">
@@ -21,7 +21,7 @@
               <span class="detail-value">{{ data.phoneNumber }}</span>
             </div>
           </div>
-          
+
           <div class="detail-item" *ngIf="data.address">
             <mat-icon class="detail-icon">home</mat-icon>
             <div class="detail-info">
@@ -29,7 +29,7 @@
               <span class="detail-value">{{ data.address }}</span>
             </div>
           </div>
-          
+
           <div class="detail-item" *ngIf="data.city || data.province">
             <mat-icon class="detail-icon">location_city</mat-icon>
             <div class="detail-info">
@@ -37,7 +37,7 @@
               <span class="detail-value">{{ getLocation() }}</span>
             </div>
           </div>
-          
+
           <div class="detail-item" *ngIf="data.zipCode">
             <mat-icon class="detail-icon">markunread_mailbox</mat-icon>
             <div class="detail-info">
@@ -45,9 +45,17 @@
               <span class="detail-value">{{ data.zipCode }}</span>
             </div>
           </div>
+
+          <div class="detail-item" *ngIf="data.createdAt">
+            <mat-icon class="detail-icon">schedule</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">Date Created</span>
+              <span class="detail-value">{{ formatDate(data.createdAt) }}</span>
+            </div>
+          </div>
         </div>
       </mat-dialog-content>
-      
+
       <mat-dialog-actions align="end" class="dialog-actions">
         <button mat-button (click)="close()" class="close-button">
           <mat-icon>close</mat-icon>

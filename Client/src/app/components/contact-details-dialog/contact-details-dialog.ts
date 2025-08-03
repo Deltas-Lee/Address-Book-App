@@ -18,6 +18,7 @@ import { Contact } from '../../models/contact.interface';
   styleUrl: './contact-details-dialog.scss'
 })
 export class ContactDetailsDialogComponent {
+
   constructor(
     public dialogRef: MatDialogRef<ContactDetailsDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Contact
@@ -26,6 +27,11 @@ export class ContactDetailsDialogComponent {
   getLocation(): string {
     const parts = [this.data.city, this.data.province];
     return parts.filter(Boolean).join(', ');
+  }
+
+  formatDate(dateString: string) {
+    const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
   }
 
   close() {

@@ -1,0 +1,32 @@
+<div class="search-filter-container">
+      <div class="search-section">
+        <mat-form-field appearance="outline" class="search-field">
+          <mat-label>Search contacts</mat-label>
+          <input matInput 
+                 [(ngModel)]="searchTerm"
+                 (input)="onSearchChange()"
+                 placeholder="Search by name, email, or phone">
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+      
+      <div class="filter-section">
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Filter by Province</mat-label>
+          <mat-select [(ngModel)]="selectedProvince" (selectionChange)="onFilterChange()">
+            <mat-option value="">All Provinces</mat-option>
+            <mat-option *ngFor="let province of provinces" [value]="province">
+              {{ province }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        <button mat-icon-button 
+                class="clear-button"
+                (click)="clearFilters()"
+                [disabled]="!searchTerm && !selectedProvince"
+                matTooltip="Clear all filters">
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </div>

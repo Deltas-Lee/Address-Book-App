@@ -1,7 +1,32 @@
+<!-- Client/src/app/components/contact-list/contact-list.html -->
 <div class="contact-list-container">
+  <!-- search and filter component -->
+  <app-search-filter
+    [provinces]="provinces()"
+    (filterChange)="onFilterChange($event)">
+  </app-search-filter>
+
+  <!-- results summary -->
+  <div class="results-summary" *ngIf="!loading()">
+    <span class="results-text">
+      Showing {{ paginatedContacts().length }} of {{ filteredContacts().length }} contacts
+      <span *ngIf="filteredContacts().length !== contacts().length">
+        (filtered from {{ contacts().length }} total)
+      </span>
+    </span>
+  </div>
+
   <div class="contacts-grid" *ngIf="!loading(); else loadingTemplate">
-    <app-contact-card *ngFor="let contact of paginatedContacts()"
-      [contact]="contact" (click)="openContactDetails(contact)"
+    <div class="no-results" *ngIf="filteredContacts().length === 0">
+      <mat-icon class="no-results-icon">search_off</mat-icon>
+      <h3>No contacts found</h3>
+      <p>Try adjusting your search term or filter setting.</p>
+    </div>
+
+    <app-contact-card
+      *ngFor="let contact of paginatedContacts()"
+      [contact]="contact"
+      (click)="openContactDetails(contact)"
       class="clickable-card">
     </app-contact-card>
   </div>
@@ -13,10 +38,15 @@
     </div>
   </ng-template>
 
-  <mat-paginator *ngIf="contacts().length > 0" class="contact-paginator"
-    [length]="contacts().length" [pageSize]="pageSize()"
-    [pageSizeOptions]="pageSizeOptions" [showFirstLastButtons]="true"
-    (page)="onPageChange($event)" aria-label="Select page of contacts">
+  <mat-paginator
+    *ngIf="filteredContacts().length > 0"
+    class="contact-paginator"
+    [length]="filteredContacts().length"
+    [pageSize]="pageSize()"
+    [pageSizeOptions]="pageSizeOptions"
+    [showFirstLastButtons]="true"
+    (page)="onPageChange($event)"
+    aria-label="Select page of contacts">
 
     <!-- Custom previous/next icons -->
     <mat-icon matPaginatorPrevious>chevron_left</mat-icon>

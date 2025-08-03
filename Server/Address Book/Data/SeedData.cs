@@ -6,7 +6,7 @@ namespace Address_Book.Data
     {
         public static Contact[] GetContacts()
         {
-            var seedDate = new DateTime(2024, 8, 2, 17, 48, 0, DateTimeKind.Utc);
+            var seedDate = new DateTime(2025, 8, 2, 17, 48, 0, DateTimeKind.Utc);
 
             return
             [

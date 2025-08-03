@@ -1,6 +1,7 @@
 .contact-details-dialog {
       min-width: 400px;
       max-width: 500px;
+      padding: 16px 20px
     }
 
     .dialog-title {
@@ -27,7 +28,7 @@
 
     .dialog-content {
       padding: 0 !important;
-      margin: 16px 0;
+      margin: 20px 0;
     }
 
     .detail-section {
@@ -73,20 +74,21 @@
     }
 
     .dialog-actions {
-      padding: 16px 0 0 0 !important;
+      padding: 20px 0 0 0 !important;
       gap: 12px;
     }
 
     .close-button {
       color: #616161;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #1e3a8a !important;
+        color: white !important;
+      }
     }
 
-    .edit-button {
-      background-color: #1e3a8a !important;
-    }
-
-    .close-button mat-icon,
-    .edit-button mat-icon {
+    .close-button mat-icon {
       margin-right: 8px;
       font-size: 18px;
       width: 18px;

@@ -8,6 +8,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ContactCardComponent } from '../contact-card/contact-card';
 import { MatDialog } from '@angular/material/dialog';
 import { ContactDetailsDialogComponent } from '../contact-details-dialog/contact-details-dialog';
+import { SearchFilterComponent, SearchFilterEvent } from '../search-filter/search-filter';
 
 @Component({
   selector: 'app-contact-list',
@@ -17,6 +18,7 @@ import { ContactDetailsDialogComponent } from '../contact-details-dialog/contact
     MatPaginatorModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    SearchFilterComponent
   ],
   templateUrl: './contact-list.html',
   styleUrl: './contact-list.scss'
@@ -29,7 +31,11 @@ export class ContactListComponent implements OnInit {
   pageSize = signal(8);
   pageSizeOptions = [8, 16, 24];
 
-  constructor(private contactService: ContactService,
+  searchTerm = signal('');
+  selectedProvince = signal('');
+
+  constructor(
+    private contactService: ContactService,
     private dialog: MatDialog
   ) { }
 
@@ -37,11 +43,51 @@ export class ContactListComponent implements OnInit {
     this.loadContacts();
   }
 
+ // computed for unique provinces
+  provinces = computed(() => {
+    const allProvinces = this.contacts()
+      .map(contact => contact.province)
+      .filter(Boolean) // Remove null or undefined
+      .filter((province, index, array) => array.indexOf(province) === index) // Remove duplicates
+      .sort();
+
+    return allProvinces as string[];
+  });
+
+  filteredContacts = computed(() => {
+    let filtered = this.contacts();
+
+    // Apply search filter
+    const search = this.searchTerm().toLowerCase().trim();
+    if (search) {
+      filtered = filtered.filter(contact =>
+        contact.fullName.toLowerCase().includes(search) ||
+        contact.email.toLowerCase().includes(search) ||
+        (contact.phoneNumber && contact.phoneNumber.toLowerCase().includes(search)) ||
+        (contact.city && contact.city.toLowerCase().includes(search))
+      );
+    }
+
+    // Apply province filter
+    const province = this.selectedProvince();
+    if (province) {
+      filtered = filtered.filter(contact => contact.province === province);
+    }
+
+    return filtered;
+  });
+
   paginatedContacts = computed(() => {
     const start = this.currentPage() * this.pageSize();
     const end = start + this.pageSize();
-    return this.contacts().slice(start, end);
+    return this.filteredContacts().slice(start, end);
   });
+
+  onFilterChange(event: SearchFilterEvent) {
+    this.searchTerm.set(event.searchTerm);
+    this.selectedProvince.set(event.selectedProvince);
+    this.currentPage.set(0); // Reset to first page when filtering
+  }
 
   loadContacts() {
     this.loading.set(true);
@@ -58,7 +104,7 @@ export class ContactListComponent implements OnInit {
     });
   }
 
-    openContactDetails(contact: Contact) {
+  openContactDetails(contact: Contact) {
     this.dialog.open(ContactDetailsDialogComponent, {
       data: contact,
       width: '500px',
