@@ -22,33 +22,45 @@ namespace Address_Book
             // Register the service layer
             builder.Services.AddScoped<IContactService, ContactService>();
 
+            // Add CORS policy
+            var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? new[] { "http://localhost:4200" };
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularApp", policy =>
+                {
+                    policy.WithOrigins(allowedOrigins)
+                          .AllowAnyHeader()
+                          .WithMethods("GET", "PUT", "POST", "DELETE");
+                });
+            });
+
             // Add API explorer and swagger
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Address Book API",
-                    Version = "v1",
-                    Description = "A simple API for managing contacts in an address book.",
-                    Contact = new OpenApiContact
+                    c.SwaggerDoc("v1", new OpenApiInfo
                     {
-                        Name = "Deltas Lephalala",
-                        Email = "deltaslep@gmail.com",
+                        Title = "Address Book API",
+                        Version = "v1",
+                        Description = "A simple API for managing contacts in an address book.",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Deltas Lephalala",
+                            Email = "deltaslep@gmail.com",
+                        }
+                    });
+
+                    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                    if (File.Exists(xmlPath))
+                    {
+                        c.IncludeXmlComments(xmlPath);
                     }
                 });
 
-            var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
-            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-            if (File.Exists(xmlPath))
-            {
-                c.IncludeXmlComments(xmlPath);
-            }
-            });
-
             var app = builder.Build();
 
-            // Ensure the database is created and seeded with initial data
+            // Ensure the database is created and seeded
             using (var scope = app.Services.CreateScope())
             {
                 var context = scope.ServiceProvider.GetRequiredService<AddressBookDbContext>();
@@ -68,14 +80,16 @@ namespace Address_Book
             {
                 app.UseSwagger();
                 app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Address Book API V1");
-                    c.RoutePrefix = string.Empty;
-                    c.DocumentTitle = "Address Book API Documentation";
-                });
+                    {
+                        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Address Book API V1");
+                        c.RoutePrefix = string.Empty;
+                        c.DocumentTitle = "Address Book API Documentation";
+                    });
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowAngularApp");
 
             app.UseAuthorization();
 

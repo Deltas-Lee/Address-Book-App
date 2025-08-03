@@ -65,12 +65,25 @@ ng serve
 - **API Documentation**: Available via Swagger UI at root URL
 - **Database**: SQLite file (addressbook.db) created automatically
 
+### CORS Issues
+
+If you see CORS errors:
+1. Ensure backend is running on https://localhost:7062
+2. Ensure frontend is running on http://localhost:4200
+3. Check browser console for specific error messages
+
+### Port Conflicts
+
+If ports are in use:
+- Backend: Change in `Properties/launchSettings.json`
+- Frontend: Run `ng serve --port 4201`
+
 ## 📋 Features
 
-- ✅ CRUD operations for contacts
+- ✅ Read & Update operations for contacts
 - ✅ Search functionality across name, email, phone, and city
 - ✅ Email uniqueness validation
-- ✅ Data seeding with 5 sample contacts
+- ✅ Data seeding with sample contacts
 - ✅ RESTful API with proper HTTP status codes
 - ✅ Input validation with data annotations
 - ✅ Error handling and logging
@@ -78,7 +91,7 @@ ng serve
 
 ## 🏛️ Architecture Patterns
 
-- **Backend**: Service Layer Pattern, Repository Pattern
+- **Backend**: Service Layer Pattern
 - **Frontend**: Signal-based State Management, Standalone Components
 - **Database**: Entity Framework Core with SQLite
 - **API**: RESTful Web API with OpenAPI documentation
@@ -87,24 +100,22 @@ ng serve
 
 - `GET /api/contacts` - Get all contacts
 - `GET /api/contacts/{id}` - Get contact by ID
-- `GET /api/contacts/search?q={query}` - Search contacts
+<!-- - `GET /api/contacts/search?q={query}` - Search contacts
 - `POST /api/contacts` - Create new contact
 - `PUT /api/contacts/{id}` - Update contact
-- `DELETE /api/contacts/{id}` - Delete contact
+- `DELETE /api/contacts/{id}` - Delete contact -->
 
 ## 🗄️ Database
 
 - **Type**: SQLite (file-based)
 - **Location**: `Server/Address Book/addressbook.db`
 - **Migrations**: Automatic on first run
-- **Seed Data**: 5 sample contacts included
+- **Seed Data**: Sample contacts included
 
 ### Sample Contacts
-- John Doe (Cape Town, Western Cape)
-- Jane Smith (Johannesburg, Gauteng)
-- Michael Johnson (Durban, KwaZulu-Natal)
-- Sarah Williams (Bloemfontein, Free State)
-- David Brown (Port Elizabeth, Eastern Cape)
+- John Doe (john.doe@example.com, Cape Town, Western Cape)
+- Deltas Lephalala (deltaslep@gmail.com, Johannesburg, Gauteng)
+- Bokang Modise (b.modise@gmail.com, Mahikeng, North-West)
 
 ## 🛠️ Tech Stack
 
