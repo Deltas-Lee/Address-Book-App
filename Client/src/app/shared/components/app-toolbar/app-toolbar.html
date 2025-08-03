@@ -1,6 +1,23 @@
 <mat-toolbar color="primary" class="app-toolbar">
   <div class="toolbar-content">
+    <div class="toolbar-brand">
       <mat-icon class="app-toolbar-icon">contacts</mat-icon>
-  <span class="app-toolbar-title">{{ title }}</span>
+      <span class="app-toolbar-title" routerLink="/">{{ title }}</span>
+    </div>
+
+    <nav class="toolbar-nav">
+      <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-button routerLink="/contacts" routerLinkActive="active">
+        <mat-icon>contacts</mat-icon>
+        <span>Contacts</span>
+      </button>
+      <button mat-button routerLink="/about" routerLinkActive="active">
+        <mat-icon>info</mat-icon>
+        <span>About</span>
+      </button>
+    </nav>
   </div>
 </mat-toolbar>

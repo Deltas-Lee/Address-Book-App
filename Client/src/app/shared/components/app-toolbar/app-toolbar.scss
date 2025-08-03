@@ -1,24 +1,109 @@
-    .app-toolbar {
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
+.app-toolbar {
+  background-color: #1e3a8a !important;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    .toolbar-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      width: 100%;
-    }
+.toolbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 
-    .app-toolbar-icon {
-      margin-right: 8px;
-    }
+.toolbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-    .app-toolbar-title {
-      font-size: 25px;
-      font-weight: 500;
+.app-toolbar-icon {
+  font-size: 28px;
+  width: 28px;
+  height: 28px;
+}
+
+.app-toolbar-title {
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.toolbar-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.toolbar-nav button {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  mat-icon {
+    margin-right: 6px;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  &.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: white;
+  }
+}
+
+// Mobile responsive
+@media (max-width: 768px) {
+  .toolbar-content {
+    padding: 0 16px;
+  }
+
+  .toolbar-nav {
+    gap: 4px;
+  }
+
+  .toolbar-nav button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-width: auto;
+
+    mat-icon {
+      margin-right: 4px;
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
     }
+  }
+
+  .app-toolbar-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .toolbar-nav button span {
+    display: none;
+  }
+
+  .toolbar-nav button mat-icon {
+    margin-right: 0;
+  }
+}
