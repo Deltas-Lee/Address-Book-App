@@ -1,0 +1,94 @@
+.contact-details-dialog {
+      min-width: 400px;
+      max-width: 500px;
+    }
+
+    .dialog-title {
+      display: flex;
+      align-items: center;
+      color: #1e3a8a;
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .title-icon {
+      margin-right: 12px;
+      background-color: #1e3a8a;
+      color: white;
+      border-radius: 50%;
+      padding: 8px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dialog-content {
+      padding: 0 !important;
+      margin: 16px 0;
+    }
+
+    .detail-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .detail-icon {
+      color: #616161;
+      margin-top: 2px;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    .detail-info {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .detail-label {
+      font-size: 12px;
+      color: #9e9e9e;
+      text-transform: uppercase;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-size: 16px;
+      color: #212121;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .dialog-actions {
+      padding: 16px 0 0 0 !important;
+      gap: 12px;
+    }
+
+    .close-button {
+      color: #616161;
+    }
+
+    .edit-button {
+      background-color: #1e3a8a !important;
+    }
+
+    .close-button mat-icon,
+    .edit-button mat-icon {
+      margin-right: 8px;
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }

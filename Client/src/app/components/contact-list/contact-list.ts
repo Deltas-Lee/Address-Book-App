@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ContactCardComponent } from '../contact-card/contact-card';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactDetailsDialogComponent } from '../contact-details-dialog/contact-details-dialog';
 
 @Component({
   selector: 'app-contact-list',
@@ -27,7 +29,9 @@ export class ContactListComponent implements OnInit {
   pageSize = signal(8);
   pageSizeOptions = [8, 16, 24];
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.loadContacts();
@@ -51,6 +55,16 @@ export class ContactListComponent implements OnInit {
         this.loading.set(false);
         this.errorMessage.set('Failed to load contacts. Please try again later.');
       }
+    });
+  }
+
+    openContactDetails(contact: Contact) {
+    this.dialog.open(ContactDetailsDialogComponent, {
+      data: contact,
+      width: '500px',
+      maxWidth: '90vw',
+      maxHeight: '80vh',
+      panelClass: 'contact-dialog-panel'
     });
   }
 

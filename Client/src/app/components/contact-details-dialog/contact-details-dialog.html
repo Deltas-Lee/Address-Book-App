@@ -1,0 +1,57 @@
+<div class="contact-details-dialog">
+      <h2 mat-dialog-title class="dialog-title">
+        <mat-icon class="title-icon">person</mat-icon>
+        {{ data.fullName }}
+      </h2>
+      
+      <mat-dialog-content class="dialog-content">
+        <div class="detail-section">
+          <div class="detail-item">
+            <mat-icon class="detail-icon">email</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">Email</span>
+              <span class="detail-value">{{ data.email }}</span>
+            </div>
+          </div>
+          
+          <div class="detail-item" *ngIf="data.phoneNumber">
+            <mat-icon class="detail-icon">phone</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">Phone</span>
+              <span class="detail-value">{{ data.phoneNumber }}</span>
+            </div>
+          </div>
+          
+          <div class="detail-item" *ngIf="data.address">
+            <mat-icon class="detail-icon">home</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">Address</span>
+              <span class="detail-value">{{ data.address }}</span>
+            </div>
+          </div>
+          
+          <div class="detail-item" *ngIf="data.city || data.province">
+            <mat-icon class="detail-icon">location_city</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">Location</span>
+              <span class="detail-value">{{ getLocation() }}</span>
+            </div>
+          </div>
+          
+          <div class="detail-item" *ngIf="data.zipCode">
+            <mat-icon class="detail-icon">markunread_mailbox</mat-icon>
+            <div class="detail-info">
+              <span class="detail-label">Zip Code</span>
+              <span class="detail-value">{{ data.zipCode }}</span>
+            </div>
+          </div>
+        </div>
+      </mat-dialog-content>
+      
+      <mat-dialog-actions align="end" class="dialog-actions">
+        <button mat-button (click)="close()" class="close-button">
+          <mat-icon>close</mat-icon>
+          Close
+        </button>
+      </mat-dialog-actions>
+    </div>
