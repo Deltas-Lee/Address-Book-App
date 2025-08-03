@@ -1,0 +1,25 @@
+<mat-card class="contact-card" [attr.aria-label]="contact.fullName + ' contact card'">
+  <mat-card-header>
+    <div mat-card-avatar class="contact-avatar">
+      <mat-icon>person</mat-icon>
+    </div>
+    <mat-card-title class="contact-name">{{ contact.fullName }}</mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-content class="contact-content">
+    <div class="contact-info">
+      <mat-icon class="info-icon">email</mat-icon>
+      <span class="info-text">{{ contact.email }}</span>
+    </div>
+    
+    <div class="contact-info" *ngIf="contact.city || contact.province">
+      <mat-icon class="info-icon">location_on</mat-icon>
+      <span class="info-text">{{ getLocation() }}</span>
+    </div>
+    
+    <div class="contact-info" *ngIf="contact.phoneNumber">
+      <mat-icon class="info-icon">phone</mat-icon>
+      <span class="info-text">{{ contact.phoneNumber }}</span>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,30 @@
+<div class="contact-list-container">
+      <div class="contacts-grid" *ngIf="!loading(); else loadingTemplate">
+        <app-contact-card
+          *ngFor="let contact of paginatedContacts()"
+          [contact]="contact">
+        </app-contact-card>
+      </div>
+
+      <ng-template #loadingTemplate>
+        <div class="loading-container">
+          <mat-spinner></mat-spinner>
+          <p>Loading contacts...</p>
+        </div>
+      </ng-template>
+
+      <mat-paginator
+        *ngIf="contacts().length > 0"
+        class="contact-paginator"
+        [length]="contacts().length"
+        [pageSize]="pageSize()"
+        [pageSizeOptions]="pageSizeOptions"
+        [showFirstLastButtons]="true"
+        (page)="onPageChange($event)"
+        aria-label="Select page of contacts">
+
+        <!-- Custom previous/next icons -->
+        <mat-icon matPaginatorPrevious>chevron_left</mat-icon>
+        <mat-icon matPaginatorNext>chevron_right</mat-icon>
+      </mat-paginator>
+    </div>

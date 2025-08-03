@@ -1,0 +1,63 @@
+    .contact-list-container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .contacts-grid {
+      display: grid;
+      gap: 20px;
+      margin-bottom: 32px;
+
+      /* larger screens (1024px+) */
+      @media (min-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      /* medium screens (768px - 1023px) */
+      @media (min-width: 768px) and (max-width: 1023px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      /* smaller screens (480px - 767px) */
+      @media (min-width: 480px) and (max-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      /* mobile screens (< 480px) */
+      @media (max-width: 479px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .loading-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      color: #616161;
+    }
+
+    .loading-container p {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+
+    .contact-paginator {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .contact-paginator ::ng-deep .mat-mdc-paginator-range-label {
+      color: #616161;
+    }
+
+    .contact-paginator ::ng-deep .mat-mdc-icon-button {
+      color: #1e3a8a;
+    }
+
+    .contact-paginator ::ng-deep .mat-mdc-icon-button:disabled {
+      color: #bdbdbd;
+    }

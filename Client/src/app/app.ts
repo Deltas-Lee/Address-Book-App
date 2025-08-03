@@ -1,10 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AddressBook } from "./components/address-book/address-book";
+import { ContactListComponent } from "./components/contact-list/contact-list";
+import { AppToolbar } from './shared/components/app-toolbar/app-toolbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, AddressBook],
+  standalone: true,
+  imports: [RouterOutlet, ContactListComponent, AppToolbar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
