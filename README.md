@@ -1,6 +1,6 @@
 # Address Book Application
 
-A modern full-stack address book application built with .NET 9 Web API and Angular 20.1.4
+A modern full-stack address book application built with .NET Web API and Angular.
 
 ## 🏗️ Architecture
 
@@ -24,7 +24,6 @@ Address Book/
 │       ├── Data/
 │       ├── DTOs/
 │       ├── Models/
-│       ├── Repositories/
 │       ├── Services/
 │       ├── Migrations/
 │       └── Program.cs
@@ -80,7 +79,7 @@ If ports are in use:
 
 ## 📋 Features
 
-- ✅ Read & Update operations for contacts
+- ✅ Read operation for contacts
 - ✅ Search functionality across name, email, phone, and city
 - ✅ Email uniqueness validation
 - ✅ Data seeding with sample contacts
