@@ -2,6 +2,11 @@
 
 A modern full-stack address book application built with .NET Web API and Angular.
 
+## 📸 Screenshots
+
+<img width="1678" height="671" alt="image" src="https://github.com/user-attachments/assets/37d0bfe7-23b4-41a0-a875-7e78879b3d11" />
+<img width="1677" height="1054" alt="image" src="https://github.com/user-attachments/assets/5ce2c455-b128-4ad2-897e-6e87b2a2e768" />
+
 ## 🏗️ Architecture
 
 - **Backend**: .NET 9 Web API with Entity Framework Core
